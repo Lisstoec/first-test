@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import ReactDOM from "react-dom";
+import { AuthContext } from "../context/AuthContext";
 import "../styles.css";
 
 export default function Login() {
@@ -77,10 +78,13 @@ export default function Login() {
     </div>
   );
 
+  const { authToken } = useContext(AuthContext);
+
   return (
     <div className="app">
       <div className="login-form">
-        <div className="title">Anmelden</div>
+        { /* FIXME: example usage of AuthContext */}
+        <div className="title">Anmelden &nbsp; {authToken}</div>
         {isSubmitted ? <div>Benutzer wurde erfolgreich angemeldet.</div> : renderForm}
       </div>
     </div>
