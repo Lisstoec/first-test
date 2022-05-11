@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import ReactDOM from "react-dom";
+import { AuthContext } from "../context/AuthContext";
 import "../register.css";
 
 export default function Register() {
@@ -76,7 +77,9 @@ export default function Register() {
   name === errorMessages.name && (
     <div className="error">{errorMessages.message}</div>
   );
- 
+
+  const { setAuthToken } = useContext(AuthContext);
+
   // JSX code for register form
   const renderForm = (       
     <div className="form">
@@ -94,6 +97,9 @@ export default function Register() {
           </div>
           <div className="button-container">
           <input type="submit" />
+          { /* FIXME: Example usage of AuthToken */}
+          <button onClick={() => setAuthToken("Hello")}>Set Context</button>
+          <button onClick={() => setAuthToken(null)}>Unset Context</button>
           </div>
         </form>
       </div>
